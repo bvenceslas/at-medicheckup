@@ -39,12 +39,13 @@ app.post('/ussd', (req, res) => {
         // This is a terminal request. Note how we start the response with END
         response = `CON Please enter your name`;
         // response = `END Your phone number is ${phoneNumber}`;
-    } else if (text) {
+    } else if (text.split('*')[text.length - 1]) {
         // This is a second level response where the user selected 1 in the first instance
         // const accountNumber = 'ACC100101';
         // This is a terminal request. Note how we start the response with END
         // response = `END Your account number is ${accountNumber}`;
-        response = `END Thank you ${text}`;
+
+        response = `CON Please enter your name`;
     }
 
     // Send the response back to the API
