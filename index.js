@@ -19,7 +19,9 @@ app.post('/ussd', (req, res) => {
     let response = '';
 
     if (text == '') {
-        response = `CON Welcome to MediCheckup. 
+        response = `CON Welcome to MediCheckup.
+        Murakaze neza, Kuri MediCheckup.
+        
         Please Choose a language
         1. Kinyarwanda
         2. English`;
@@ -72,15 +74,14 @@ app.post('/ussd', (req, res) => {
     }
     else if (text == '2*1*1*1*1') {
 
-        response = `END I am sorry to announce you that, 
-        these look like the EBOLA signs and symptoms.
-        Please contact this phone number for an emergency physical support`;
+        response = `END We are sorry to announce you that, these look like the EBOLA signs and symptoms.
+        Please contact 007 for an emergency MEDICAL SUPPORT`;
     }
     else if (text == '2*2*1*1*1') {
 
         response = `END We are sorry for the body pain, 
         these don't look like the EBOLA signs and symptoms.
-        Please contact 911 for a medical advice`;
+        Please contact 911 for a MEDICAL ADVICE`;
     }
 
     // Send the response back to the API
