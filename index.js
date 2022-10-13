@@ -33,8 +33,7 @@ app.post('/ussd', (req, res) => {
         2. English`;
     } else if (text == '1') {
         // Business logic for first level response
-        response = `CON Choose account information you want to view
-        1. Account number`;
+        response = `CON Ufite umurira?`;
     } else if (text == '2') {
         // Business logic for first level response
         // This is a terminal request. Note how we start the response with END
@@ -43,14 +42,7 @@ app.post('/ussd', (req, res) => {
         2. No`;
         // response = `END Your phone number is ${phoneNumber}`;
 
-    } else if (text == '1*1' || text == '1*2') {
-        response = `CON Do you have fever?.
-        1. Yes
-        2. No`;
-
-    }
-
-    else if (text == '2*1') {
+    } else if (text == '2*1') {
         // This is a second level response where the user selected 1 in the first instance
         // const accountNumber = 'ACC100101';
         // This is a terminal request. Note how we start the response with END
@@ -72,18 +64,40 @@ app.post('/ussd', (req, res) => {
         2. No`;
 
 
-    } else if (text == '2*1*1*1') {
+    } else if (text == '2*2*1') {
+
+        response = `CON Do you have muscle and joint pain?.
+        1. Yes
+        2. No`;
+
+
+    }
+    else if (text == '2*1*1*1') {
 
         response = `CON Do you have Sore throat?.
         1. Yes
         2. No`;
 
 
-    } else if (text == '2*1*1*1*1') {
+    } else if (text == '2*2*1*1') {
+
+        response = `CON Do you have Sore throat?.
+        1. Yes
+        2. No`;
+
+
+    }
+    else if (text == '2*1*1*1*1') {
 
         response = `END I am sorry to announce you that, 
         these look like the EBOLA signs and symptoms.
         Please contact this phone number for an emergency physical support`;
+    }
+    else if (text == '2*2*1*1*1') {
+
+        response = `END We are sorry for the body pain, 
+        these don't look like the EBOLA signs and symptoms.
+        Please contact 911 for a medical advice`;
     }
 
     // Send the response back to the API
