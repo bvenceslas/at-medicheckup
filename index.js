@@ -8,14 +8,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// code here
-// app.use('/', async (req, res) => {
-//     res.json('MediCheckup responding successfully ...')
-// })
-
-
 app.post('/ussd', (req, res) => {
-    // Read the variables sent via POST from our API
     const {
         sessionId,
         serviceCode,
@@ -26,28 +19,18 @@ app.post('/ussd', (req, res) => {
     let response = '';
 
     if (text == '') {
-        // This is the first request. Note how we start the response with CON
         response = `CON Welcome to MediCheckup. 
         Please Choose a language
         1. Kinyarwanda
         2. English`;
     } else if (text == '1') {
-        // Business logic for first level response
-        response = `CON Ufite umurira?`;
+        response = `END Mutwihanganire ntago gukoresha ikinyarwanda birakunda!!`;
     } else if (text == '2') {
-        // Business logic for first level response
-        // This is a terminal request. Note how we start the response with END
         response = `CON Do you have fever?.
         1. Yes
         2. No`;
-        // response = `END Your phone number is ${phoneNumber}`;
 
     } else if (text == '2*1') {
-        // This is a second level response where the user selected 1 in the first instance
-        // const accountNumber = 'ACC100101';
-        // This is a terminal request. Note how we start the response with END
-        // response = `END Your account number is ${accountNumber}`;
-
         response = `CON Do you have headache?.
         1. Yes
         2. No`;
