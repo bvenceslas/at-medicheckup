@@ -27,7 +27,8 @@ app.post('/ussd', (req, res) => {
 
     if (text == '') {
         // This is the first request. Note how we start the response with CON
-        response = `CON Welcome to MediCheckup. Please Choose a language
+        response = `CON Welcome to MediCheckup. 
+        Please Choose a language
         1. Kinyarwanda
         2. English`;
     } else if (text == '1') {
@@ -37,19 +38,51 @@ app.post('/ussd', (req, res) => {
     } else if (text == '2') {
         // Business logic for first level response
         // This is a terminal request. Note how we start the response with END
-        response = `CON Do you have fever?`;
+        response = `CON Do you have fever?.
+        1. Yes
+        2. No`;
         // response = `END Your phone number is ${phoneNumber}`;
-    } else if (text.split('*')[text.length - 1]) {
-        // This is a second level response where the user selected 1 in the first instance
-        // const accountNumber = 'ACC100101';
-        // This is a terminal request. Note how we start the response with END
-        // response = `END Your account number is ${accountNumber}`;
+        if (text == '1') {
+            // This is a second level response where the user selected 1 in the first instance
+            // const accountNumber = 'ACC100101';
+            // This is a terminal request. Note how we start the response with END
+            // response = `END Your account number is ${accountNumber}`;
 
-        const disease = "Corona";
+            response = `CON Do you have headache?.
+            1. Yes
+            2. No`;
 
-        response = `END Your phone number is ${phoneNumber}`;
+            if (text == '1') {
 
-        response = `CON How are feeling`;
+                response = `CON Do you have muscle and joint pain?.
+                1. Yes
+                2. No`;
+
+                if (text == '1') {
+
+                    response = `CON Do you have Sore throat?.
+                    1. Yes
+                    2. No`;
+
+                    if (text == '1') {
+
+                        response = `END I am sorry to announce you that, 
+                        these look like the EBOLA signs and symptoms.
+                        Please contact this phone number for an emergency physical support`;
+                    }
+
+
+
+                }
+
+
+
+            }
+
+
+
+            response = `CON How are feeling`;
+        }
     }
 
     // Send the response back to the API
