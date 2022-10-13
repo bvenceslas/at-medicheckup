@@ -1,2 +1,2 @@
 # at-medicheckup
-Medical Checkup App using Africa's Talking USSD system (Similation mode)
+Medical Checkup App using Africa's Talking USSD system (Simulation mode)
