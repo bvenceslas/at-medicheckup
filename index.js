@@ -50,7 +50,7 @@ app.post('/ussd', (req, res) => {
 
     }
 
-    else if (text == '2*1' || text == '2*2') {
+    else if (text == '2*1') {
         // This is a second level response where the user selected 1 in the first instance
         // const accountNumber = 'ACC100101';
         // This is a terminal request. Note how we start the response with END
@@ -60,21 +60,26 @@ app.post('/ussd', (req, res) => {
         1. Yes
         2. No`;
 
-    } else if (text == '2*1*1' || text == '2*1*2') {
+    } else if (text == '2*2') {
+        response = `CON Do you have headache?.
+        1. Yes
+        2. No`;
+    }
+    else if (text == '2*1*1') {
 
         response = `CON Do you have muscle and joint pain?.
         1. Yes
         2. No`;
 
 
-    } else if (text == '2*1*1*1' || text == '2*1*1*2') {
+    } else if (text == '2*1*1*1') {
 
         response = `CON Do you have Sore throat?.
         1. Yes
         2. No`;
 
 
-    } else if (text == '2*1*1*1*1' || text == '2*1*1*1*1') {
+    } else if (text == '2*1*1*1*1') {
 
         response = `END I am sorry to announce you that, 
         these look like the EBOLA signs and symptoms.
