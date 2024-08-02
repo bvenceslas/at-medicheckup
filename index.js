@@ -8,9 +8,11 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get("/test", (req, res) => {
-  res.json({ msg: "API working properly ..." });
-});
+// add app routes
+const ussdRoutes = require("./routes/ussd.routes");
+
+// routes use
+app.use("/api", ussdRoutes);
 
 app.post("/ussd", (req, res) => {
   const { sessionId, serviceCode, phoneNumber, text } = req.body;
