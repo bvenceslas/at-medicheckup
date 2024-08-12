@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+// import the useUssd function from the controller
 const { useUssd } = require("../controllers/ussd.controller");
 
 // test the API
